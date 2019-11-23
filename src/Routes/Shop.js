@@ -14,12 +14,7 @@ function Shop() {
 
    // fetch api
   const fetchItems = async () => {
-    const data = await fetch('https://api.bestbuy.com/v1/products(search=toaster&search=stainless&search=steel)?format=json&show=sku,name,image,salePrice&apiKey=mznufc3sxam3w2r7pkdbmnu2',
-    // {
-    //   headers: {
-    //       Authorization: 'mznufc3sxam3w2r7pkdbmnu2'
-    //   },
-    // }
+    const data = await fetch('https://api.bestbuy.com/v1/products(search=toaster&search=stainless&search=steel)?format=json&show=sku,name,image,salePrice&apiKey=mznufc3sxam3w2r7pkdbmnu2', 
     );
 
     const items = await data.json();
