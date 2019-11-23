@@ -7,7 +7,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: darkblue;
+  background: lightslategrey;
   color: white;
 }
 
@@ -32,3 +32,11 @@ input {
   text-align: right;
   margin: 10px;
 }
+
+.thishomepage {
+  object-fit: cover;
+  display: flex;
+  height: 900px;
+  width: -webkit-fill-available;
+}
+

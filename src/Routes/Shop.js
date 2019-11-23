@@ -14,17 +14,17 @@ function Shop() {
 
    // fetch api
   const fetchItems = async () => {
-    const data = await fetch('https://fortnite-api.theapinetwork.com/upcoming/get',
-    {
-      headers: {
-          Authorization: '2cdaa82c8d220b4c49f74cd6550fdabf'
-      },
-    }
+    const data = await fetch('https://api.bestbuy.com/v1/products(search=toaster&search=stainless&search=steel)?format=json&show=sku,name,image,salePrice&apiKey=mznufc3sxam3w2r7pkdbmnu2',
+    // {
+    //   headers: {
+    //       Authorization: 'mznufc3sxam3w2r7pkdbmnu2'
+    //   },
+    // }
     );
 
     const items = await data.json();
-    console.log(items.data);
-    setItems(items.data);
+    console.log(items.products);
+     setItems(items.products);
   };
 
   return (
@@ -32,9 +32,10 @@ function Shop() {
     <h1>Shop Page</h1>
     <div>
       {items.map(item => (
-        <h1 key={item.itemId}>
-        <Link to={`/shop/${item.itemId}`}>{item.item.name}</Link>
+        <h1 key={item.sku}>
+        <Link to={`/shop/${item.sku}`}>{item.name}</Link>
         </h1>
+        // <img src={item.image} alt="product image"/>
       ))}
     </div>
     </>

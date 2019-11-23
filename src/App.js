@@ -22,11 +22,6 @@ function App() {
     <Router>
       <div className="App">
         <Nav />
-        <div>
-          <Link Redirect to="/login" >
-          <h3 className="logout">Logout</h3>
-          </Link>
-        </div>
         <Switch>
           <Route path="/" exact component={Home}/>
           <Route path="/login" component={Login}/>
@@ -39,15 +34,29 @@ function App() {
           <Route path="/checkout" component={Checkout}/>
         </Switch>
       </div>
+      <div>
+          <Link Redirect to="/login" >
+          <h3 className="logout">Logout</h3>
+          </Link>
+        </div>
     </Router>
     </>
   );
 }
 
 const Home = () => (
-  <div>
-    <h1>Home Page</h1>
-  </div>
+  <>
+    <div>
+      <h1>Home Page</h1>
+    </div>
+    <div className='thishomepage'>
+      <img className='hi' src="https://img1.wsimg.com/isteam/stock/11139/:/rs=w:800,h:1000,cg:true,m/cr=w:1600,h:1000,a:cc" alt="welcome"></img>
+    </div>
+    <div class="rectangle">
+      <div class="circle">hi</div>
+      <div class="circle">hola</div>
+    </div>
+  </>
 );
 
 export default App;
