@@ -29,38 +29,21 @@ function Product({match}) {
         // console.log(item);
         // setItem(item.products);
         // console.log(item.products)
-        const skuu = match.params.id
-        // console.log(skuu)
-        // const specific = item.products.filter(sku => sku == skuu);
-        // console.log(skuu)
-        // console.log(specific)
-
-        setItem(item.products);
-        console.log(Object.values(item.products[0]));
-        console.log(Object.values(item.products[0]).filter(sku => sku == skuu));
-        console.log(item.products[0].image);
+        const currentSku = match.params.id
+        let itemsArray = item.products;
+        console.log("itemsArray", itemsArray);
+        console.log("sku", currentSku);
         
-        // for(let i = 0; i<item.products.length; i++){
-        //   setItem(item.products);
-        //   console.log(item.products[i]);
-        //   console.log(item.products[i].image);
-        // }
-
-        // console.log(item.products.keys(sku).indexOf(skuu))
-        
-        console.log(item.products[0].image);
-        // console.log(item.products.indexOf(products.sku[skuu]))
-
-        
-      
+        let index = function(currentSku,arr){
+          for(var i = 0; i < arr.length; i++) {
+            if(arr[i].sku == currentSku) {
+              return i;
+            }
+         }
+        }
+        var selIndex = index(currentSku, itemsArray);
+        setItem(item.products[selIndex]);
       });
-        // console.log(item.products[0].image)
-        // console.log(item.products[0].name)
-        // console.log(item.data.item.name)
-        // console.log(item.data.item.images.information)
-        // } catch(e){
-        //   console.log(e)
-        // }
     };
 
 
