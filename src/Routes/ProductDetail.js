@@ -22,7 +22,7 @@ function Product({match}) {
           .then(response => response.json())
           .then(responseJson => {
             const item = responseJson;
-            console.log(responseJson);;
+            console.log(responseJson);
           
         // try {
         // const item = await fetchItem.json();
@@ -33,7 +33,7 @@ function Product({match}) {
         let itemsArray = item.products;
         console.log("itemsArray", itemsArray);
         console.log("sku", currentSku);
-        
+
         let index = function(currentSku,arr){
           for(var i = 0; i < arr.length; i++) {
             if(arr[i].sku == currentSku) {
