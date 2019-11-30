@@ -5,114 +5,48 @@ import {Link} from 'react-router-dom';
 // use effect: runs the fetch call when our component mounts
 
 function Shop() {
-  // useEffect(() => {
-    // fetchItems();
-  // },[]); // only run when components mounts
 
-   // state to put the items in
-   const [items, setItems] = useState({});
+  const eachItem = [];
 
+  function itemList(products){
+    let itemsArray=products
+    console.log("itemArray", itemsArray);
+    return(
+      <h1>Hi</h1>
+    )
+   }
 
-  const productContainer = document.getElementById('products');
-   // fetch api
-  let fetchItems = fetch('https://api.bestbuy.com/v1/products(search=toaster&search=stainless&search=steel)?format=json&show=sku,name,image,salePrice&apiKey=mznufc3sxam3w2r7pkdbmnu2')
-    .then((res) => {
-      return res.json();
-    }).then((res) => {
-      const products = res.products;
-      console.log("products", products)
-      // return products;
-      // setItems(products);
-
-      let currProduct = function(products){
-        // arr = [];
-        for(var i = 0; i < 10; i++) {
-          let prod = products[i];
-          console.log("i",i)
-          console.log("current",prod);
-          console.log("current",prod.name);
-          // setItems(prod);
-          // return prod;
-        }
-      }
-
-      // var renderProd = currProduct(products);
-      setItems(currProduct(products));
-      console.log("it",items)
-      console.log("hi", setItems(currProduct(products)));
-
-      // for(let i = 0; i<products.length; i++){
-      //   let currProduct = products[i];
-      //   console.log("i",i)
-      //   console.log("current",currProduct);
-      //   setItems(currProduct);
-      // }
-      // setItems(fetchItems);
+   function fetchItems(){
+      fetch('https://api.bestbuy.com/v1/products(search=toaster&search=stainless&search=steel)?format=json&show=sku,name,image,salePrice&apiKey=mznufc3sxam3w2r7pkdbmnu2')
+    .then(response => {
+      return response.json()
     })
-    // setItems(fetchItems);
-    // console.log("setItem:", setItems(fetchItems));
-    // fetchItems();
-    // console.log("what", products);
-    // let prod = fetchItems;
-    // setItems(prod);
+    .then(data => {
+      eachItem.allProducts = data.products
+      itemList(eachItem.allProducts);
+      // ItemList(eachItem);
+      console.log("allprods", eachItem.allProducts)
+      return eachItem.allProducts;
+    })
+    .catch(err => {
+      // Do something for an error here
+    })
+   }
+   
+  
+  let itemsArray = fetchItems();
+  console.log("itemsArray OUTSIDE", itemsArray);
+  
 
-
-    // currentProduct(items)
-    
-    // console.log("set",setItems(currentProduct(items)))
-
-
-      return (
-        <>
-        <h1>Shop Page</h1>
-        <div>
-          {items.map(item => (
-            
-            <h4 key={item.sku}>
-            <Link to={`/shop/${item.sku}`}>{item.name}</Link>
-            </h4>
-            // <img src={item.image} alt="product image"/>
-          ))}
-          <img src={items.image} alt=""/>
-        </div>
-        </>
-      );
-      }
-
-
-
-  // return (
-  //   <>
-  //   <h1>Shop Page</h1>
-  //   <div>
-  //       <h1>{items}</h1>
-  //       {/* <h4 key={items.sku}>
-  //       <Link to={`/shop/${items.sku}`}>{items.name}</Link>
-  //       </h4> */}
-  //       {/* // <img src={item.image} alt="product image"/> */}
-
-  //     {/* <img src={items.image} alt=""/> */}
-  //   </div>
-  //   </>
-  // )};
-
+  return (
+    <>
+    <h1>Shop Page</h1>
+    <div>
+      <h1>Hi</h1>
+      <h1>{itemsArray.map(itemList)}</h1>
+    </div>
+    </>
+  );
+}
 
 export default Shop;
-
-
-// return (
-//   <>
-//   <h1>Shop Page</h1>
-//   <div>
-//     {items.map(item => (
-      
-//       <h4 key={item.sku}>
-//       <Link to={`/shop/${item.sku}`}>{item.name}</Link>
-//       </h4>
-//       // <img src={item.image} alt="product image"/>
-//     ))}
-//     <img src={items.image} alt=""/>
-//   </div>
-//   </>
-// );
-// }
