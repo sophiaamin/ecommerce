@@ -7,16 +7,36 @@ import {Link} from 'react-router-dom';
 function Shop() {
 
   let eachItem = [];
+  let why = ['why', 'hello'];
+
+  function NameComponent(props){
+    console.log("prop", props);
+    return(
+      <div>
+        <h1>{props}</h1>
+      </div>
+    );
+  }
+
+  function looping(oneItem){
+    console.log("each HERE:", oneItem);
+    return(
+      <div>
+        <h1>{oneItem}</h1> 
+      </div>
+    );
+  }
 
   const itemName = function listItem(products){
     var name = products.map(function(prod){
       console.log("itemer", prod.name);
-      return prod.name;
+      return eachItem.push(prod.name);
+      // return prod.name;
     });
-    console.log("did this work", name);
-    return(
-      name
-    );
+    // console.log("did this work", name);
+    // return(
+    //   name
+    // );
    }
 
    function RenderName(nname){
@@ -54,7 +74,7 @@ function Shop() {
   //   );
   // }
 
-   function getItems() { fetch('https://api.bestbuy.com/v1/products(search=toaster&search=stainless&search=steel)?format=json&show=sku,name,image,salePrice&apiKey=mznufc3sxam3w2r7pkdbmnu2')
+   const fetchItems = function getItems() { fetch('https://api.bestbuy.com/v1/products(search=toaster&search=stainless&search=steel)?format=json&show=sku,name,image,salePrice&apiKey=mznufc3sxam3w2r7pkdbmnu2')
     .then(response => {
       return response.json()
     })
@@ -63,24 +83,33 @@ function Shop() {
       // itemList(eachItem.allProducts);
       console.log("allprods", prod)
       // itemList(prod[0]);
-      itemName(prod);
+      eachItem = itemName(prod);
       ItemList(prod);
       RenderName(prod);
+      
       return prod;
     })
     .catch(err => {
       // Do something for an error here
     });
   }
-  getItems();
+  fetchItems();
+  console.log("getItems", fetchItems());
+  console.log("eachItemDOOD", eachItem);
+  console.log("why", why);
+  
+
   return (
     <>
     <h1>Shop Page</h1>
     <div>
       <h1>Hi</h1>
-      <RenderName />
+      {/* <RenderName />
       <ItemList />
-      <itemName />
+      <itemName /> */}
+      <h2>{why.map(looping)}</h2>
+      <h2>{eachItem}</h2>
+      <h2>{eachItem.map(looping)}</h2>
     </div>
     </>
   );
