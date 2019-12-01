@@ -23,31 +23,20 @@ function Shop() {
      setItems(items.products);
   };
 
-  function productEntry(product){
-    return(
+  return (
+    <>
+    <h1>Shop Page</h1>
+    <div>{items.map((product) => 
       <ProductCard 
         key={product.sku}
         sku={product.sku}
         name={product.name}
         salePrice={product.salePrice}
         image={product.image}
-      />
-    );
-  }
-
-  return (
-    <>
-    <h1>Shop Page</h1>
-    <div>{items.map(productEntry)}</div>
-    {/* <div>
-      {items.map(item => (
-        <h1 key={item.sku}>
-        <Link to={`/shop/${item.sku}`}>{item.name}</Link>
-        </h1>
-        // <img src={item.image} alt="product image"/>
-      ))}
-    </div> */}
-    </>
+      /> 
+  )}
+    </div>
+    </> 
   );
 }
 
