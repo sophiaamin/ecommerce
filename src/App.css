@@ -40,3 +40,8 @@ input {
   width: -webkit-fill-available;
 }
 
+.productImg{
+  height:100px;
+  width:100px;
+}
+
